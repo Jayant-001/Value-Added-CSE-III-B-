@@ -1,0 +1,30 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int Digital_Sum(int num, int ans) {
+    if(num == 0)
+        return ans;
+    int t = num%10;
+    ans += t;
+    num /= 10;
+    return Digital_Sum(num, ans);
+}
+
+
+int main() {
+    
+    int n;
+    cin >> n;
+    
+    int ans = Digital_Sum(n, 0);
+    while(ans/10 != 0) {
+        ans = Digital_Sum(ans, 0);
+    }
+    cout << ans;
+    
+    return 0;
+}

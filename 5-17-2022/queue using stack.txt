@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+stack<int> st;
+stack<int> temp;
+
+void enqueue(int data) {
+    st.push(data);
+}
+
+void dequeue() {
+    if(st.empty()) {
+        cout << "Stack is empty" << endl;
+        return;
+    }
+    while(!st.empty()) {
+        temp.push(st.top());
+        st.pop();
+    }
+    int k = temp.top();
+    temp.pop();
+    while(!temp.empty()){
+        st.push(temp.top());
+        temp.pop();
+    }
+    cout << k << endl;
+}
+
+int main() {
+    
+    string s;
+    while(getline(cin, s)) {
+        if(s.length() == 7) {
+            dequeue();
+        }
+        else {
+            int num  = stoi(s.substr(8));
+            enqueue(num);
+        }
+    }
+
+
+
+    return 0;
+}
